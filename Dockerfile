@@ -22,6 +22,8 @@ RUN ./gradlew build --no-daemon
 # Use an OpenJDK runtime as a parent image
 FROM openjdk:17-jdk-alpine3.14
 
+ARG VERSION
+
 # Set the working directory to /app
 WORKDIR /app
 
