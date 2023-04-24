@@ -1,11 +1,30 @@
+# Use a Java 17 base image as a parent image
+FROM openjdk:17-jdk-alpine3.14 AS build
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the Gradle files to the container
+COPY build.gradle settings.gradle gradle.properties ./
+COPY gradle/ gradle/
+
+# Download the project dependencies
+RUN ./gradlew build --no-daemon
+
+# Copy the project source code to the container
+COPY src/ src/
+
+# Build the project
+RUN ./gradlew build --no-daemon
+
 # Use an OpenJDK runtime as a parent image
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM openjdk:17-jdk-alpine3.14
 
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the packaged application JAR file to the container
-COPY target/mandel-java.jar mandel-java.jar
+COPY --from=build /app/build/libs/mandel-java.jar mandel-java.jar
 
 # Expose port 8080 for the application to listen on
 EXPOSE 8080
