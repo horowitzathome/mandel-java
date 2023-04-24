@@ -1,6 +1,8 @@
 # Use a Java 17 base image as a parent image
 FROM openjdk:17-jdk-alpine3.14 AS build
 
+ARG VERSION
+
 # Set the working directory to /app
 WORKDIR /app
 
@@ -24,7 +26,7 @@ FROM openjdk:17-jdk-alpine3.14
 WORKDIR /app
 
 # Copy the packaged application JAR file to the container
-COPY --from=build /app/build/libs/mandel-java.jar mandel-java.jar
+COPY --from=build /app/build/libs/mandel-java-${VERSION}.jar mandel-java.jar
 
 # Expose port 8080 for the application to listen on
 EXPOSE 8080
