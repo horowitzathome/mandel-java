@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine3.14 AS build
 WORKDIR /app
 
 # Copy the Gradle files to the container
-COPY build.gradle settings.gradle gradle.properties ./
+COPY build.gradle settings.gradle gradle.properties gradlew ./
 COPY gradle/ gradle/
 
 # Download the project dependencies
