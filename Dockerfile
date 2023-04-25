@@ -34,4 +34,4 @@ COPY --from=build /app/build/libs/mandel-java-${VERSION}.jar mandel-java.jar
 EXPOSE 8080
 
 # Set the command to run the application when the container starts
-CMD ["java", "-jar", "mandel-java.jar"]
+CMD ["java", "-Xmx1536m", "-Xss128m", "-jar", "mandel-java.jar"]

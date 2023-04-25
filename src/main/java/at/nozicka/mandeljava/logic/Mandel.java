@@ -39,10 +39,10 @@ public class Mandel {
                     // more characters for different iterations
                     pixel = '*';
                 }
-                System.out.print(pixel);
+                //System.out.print(pixel);
                 result.append(pixel);
             }
-            System.out.println();
+            //System.out.println();
             result.append('\n');
         }
 
