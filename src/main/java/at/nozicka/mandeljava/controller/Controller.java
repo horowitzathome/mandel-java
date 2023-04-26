@@ -17,10 +17,10 @@ public class Controller {
         return Mono.just(result);
     }
 
-    @GetMapping("/mandel_java/mandel_text/{maxIter}")
-    public Mono<String> sayHello(@PathVariable int maxIter) {
+    @GetMapping("/mandel_java/mandel_text/{maxIter}/{height}/{width}")
+    public Mono<String> mandel(@PathVariable int maxIter, @PathVariable int height, @PathVariable int width) {
 
-        var result = Mandel.mandel(maxIter);
+        var result = Mandel.mandel(maxIter, height, width);
 
         return Mono.just(result);
     }
