@@ -8,6 +8,15 @@ import reactor.core.publisher.Mono;
 
 @RestController
 public class Controller {
+
+    @GetMapping("/actuator/health")
+    public Mono<String> health() {
+
+        var result = "healthy";
+
+        return Mono.just(result);
+    }
+
     @GetMapping("/mandel_java/mandel_text/{maxIter}")
     public Mono<String> sayHello(@PathVariable int maxIter) {
 
