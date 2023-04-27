@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'at.nozicka'
-version = "0.0.12"
+version = "0.0.13"
 sourceCompatibility = '17'
 
 configurations {
@@ -21,6 +21,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.apache.commons:commons-math3:3.6.1'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

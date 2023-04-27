@@ -1,6 +1,7 @@
 package at.nozicka.mandeljava.controller;
 
 import at.nozicka.mandeljava.logic.Mandel;
+import at.nozicka.mandeljava.logic.MandelMemory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,14 @@ public class Controller {
     public Mono<String> mandel(@PathVariable int maxIter, @PathVariable int height, @PathVariable int width) {
 
         var result = Mandel.mandel(maxIter, height, width);
+
+        return Mono.just(result);
+    }
+
+    @GetMapping("/mandel_java/mandel_text_memory/{maxIter}/{height}/{width}")
+    public Mono<String> mandelMemory(@PathVariable int maxIter, @PathVariable int height, @PathVariable int width) {
+
+        var result = MandelMemory.mandel(maxIter, height, width);
 
         return Mono.just(result);
     }
